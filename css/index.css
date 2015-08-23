@@ -1,16 +1,35 @@
 .node {
   cursor: pointer;
 }
+
 .node circle {
   fill: #fff;
   stroke: steelblue;
   stroke-width: 1.5px;
 }
+
 .node text {
-  font: 10px sans-serif;
+  font-size: 10px;
+  font-family: sans-serif;
 }
+
 .link {
   fill: none;
   stroke: #ccc;
   stroke-width: 1.5px;
+}
+
+.overlay {
+  background-color: #EEE;
+}
+
+.link {
+  fill: none;
+  stroke: #ccc;
+  stroke-width: 1.5px;
+}
+
+.skill-tree {
+	width: 800px;
+	height: 600px;
 }
