@@ -3,7 +3,7 @@
 }
 
 .node circle {
-  fill: #fff;
+  fill: #EEE !important;
   stroke: steelblue;
   stroke-width: 1.5px;
 }
@@ -29,7 +29,19 @@
   stroke-width: 1.5px;
 }
 
-.skill-tree {
-	width: 800px;
-	height: 600px;
+.menu, .ui.segment {
+  margin: 0px !important;
+  border-radius: 0px !important;
+}
+
+.right.sidebar.menu {
+  min-width: 20%;
+}
+
+.pushable {
+  background: white;
+}
+
+.foot {
+  height: 25%;
 }

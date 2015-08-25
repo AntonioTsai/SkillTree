@@ -1,5 +1,5 @@
 // Get JSON data
-treeJSON = d3.json("js/skilltree.json", function(error, treeData) {
+treeJSON = d3.json("skilltree.json", function(error, treeData) {
 
   // Calculate total nodes, max label length
   var totalNodes = 0;
@@ -11,7 +11,8 @@ treeJSON = d3.json("js/skilltree.json", function(error, treeData) {
   var root;
   // size of the diagram
   var viewerWidth = $(".skill-tree").width();
-  var viewerHeight = $(".skill-tree").height();
+  var viewerHeight = $(document).height() * 0.7;
+  console.log(viewerWidth, viewerHeight);
   var tree = d3.layout.tree()
     .size([viewerHeight, viewerWidth]);
 
@@ -139,6 +140,7 @@ treeJSON = d3.json("js/skilltree.json", function(error, treeData) {
     if (d3.event.defaultPrevented) return; // click suppressed
     update(d);
     centerNode(d);
+    console.log(d)
   }
 
   function update(source) {
@@ -171,6 +173,7 @@ treeJSON = d3.json("js/skilltree.json", function(error, treeData) {
     // Update the nodes
     node = svgGroup.selectAll("g.node")
       .data(nodes, function(d) {
+        console.log(d)
         return d.id || (d.id = ++i);
       });
 
@@ -181,7 +184,12 @@ treeJSON = d3.json("js/skilltree.json", function(error, treeData) {
       .attr("transform", function(d) {
         return "translate(" + source.y0 + "," + source.x0 + ")";
       })
-      .on('click', click);
+      .on('click', click)
+      .on('mouseover', function(d) {
+        d3.select('div.discription p').text(d.discription);
+        d3.select('div.essential p').text(d.essential);
+        d3.select('div.optional p').text(d.optional);
+      });
 
     nodeEnter.append("circle")
       .attr('class', 'nodeCircle')

@@ -1,3 +1,4 @@
+<!--BackUp html-->
 <!DOCTYPE html>
 <html>
 
@@ -5,53 +6,72 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
   <title>Skill-Tree</title>
-  <link rel="stylesheet" href="css/index.css">
-  <link rel="stylesheet" type="text/css" href="/Semantic/semantic.min.css">
-  <script src="Semantic/semantic.js"></script>
-  <script src="js/jquery-2.1.1.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="dist/semantic.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/jquery-2.1.4.min.js"></script>
+  <script src="dist/semantic.js"></script>
   <script src="js/d3.min.js"></script>
   <script src="js/skilltree.js"></script>
 </head>
 
 <body class="pushable">
   <div class="pusher">
-    <div class="ui inverted vertical masthead center aligned segment">
-      <div class="ui large secondary inverted pointing menu">
-        <a class="active item">Skill Tree</a>
-        <a class="item right">
-          <i class="large info inverted circle icon"></i>
-        </a>
-      </div>
-      <div class="ui bottom attached segment pushable">
-        <div class="ui inverted labeled icon right inline vertical sidebar menu">
-          <a class="item">
-            <i class="home icon"></i>
-              Home
-          </a>
-          <a class="item">
-            <i class="block layout icon"></i>
-            Topics
-          </a>
-          <a class="item">
-            <i class="smile icon"></i>
-            Friends
-          </a>
-          <a class="item">
-            <i class="calendar icon"></i>
-            History
-          </a>
+    <div class="ui top inverted menu">
+      <div class="row">
+        <div class="header item">
+          <a href="#"><h2 class="white">TDOHacker</h2></a>
         </div>
       </div>
     </div>
-    <div class="skill-tree"></div>
-      
-    </div>
-
-    <div class="ui inverted vertical footer segment">
-      <div class="ui">
+    <div class="ui pushable">
+      <div class="ui  right vertical sidebar menu uncover visible">
+        <div class="item discription">
+          <h3 class="ui header">
+            介紹
+          </h3>
+          <p>this is the place to add discription</p>
+        </div>
+        <div class="item essential">
+          <h3 class="ui header">
+            必修
+          </h3>
+          <p>this is the place to add discription</p>
+        </div>
+        <div class="item optional">
+          <h3 class="ui header">
+            選修
+          </h3>
+          <p>this is the place to add discription</p>
+        </div>
+      </div>
+      <div class="attached pushable">
+        <div class="skill-tree"></div>
       </div>
     </div>
+    <div class="ui inverted segment">
+    <!--div class="ui fixed bottom pushable inverted footer segment"-->
+      <h3 class="ui center aligned dividing header">目標大師</h3>
+        <div class="ui medium image">
+          <div class="ui dimmer">
+            <div class="content">
+              <div class="center">
+                <h2 class="ui inverted header">Name</h2>
+                <p>some discription</p>
+              </div>
+            </div>
+          </div>
+          <img class="ui image" src="http://fakeimg.pl/300x200">
+        </div>
+    </div>   
   </div>
+
+  <script type="text/javascript">
+    $('.inverted.segment .image')
+  .dimmer({
+    on: 'hover'
+  })
+;
+  </script>
 </body>
 
 </html>
