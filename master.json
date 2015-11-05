@@ -1,0 +1,27 @@
+{
+ "name": "MasterA",
+ "skill": [
+  {
+   "name": "攻擊",
+   "children": [
+    {"name": "網路架構"},
+    {"name": "網路程式"},
+    {"name": "OS"}
+  ]
+  },
+  {
+   "name": "防禦",
+   "children": [
+    {"name": "防禦性程式開發"},
+    {"name": "企業資安"}
+  ]
+  },
+  {
+   "name": "逆向",
+   "children": [
+    {"name": "平台"},
+    {"name": "Fuzzy"}
+   ]
+  }
+ ]
+}

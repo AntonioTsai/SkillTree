@@ -12,7 +12,7 @@ treeJSON = d3.json("skilltree.json", function(error, treeData) {
   // size of the diagram
   var viewerWidth = $(".skill-tree").width();
   var viewerHeight = $(document).height() * 0.7;
-  console.log(viewerWidth, viewerHeight);
+  //console.log(viewerWidth, viewerHeight);
   var tree = d3.layout.tree()
     .size([viewerHeight, viewerWidth]);
 
@@ -140,7 +140,7 @@ treeJSON = d3.json("skilltree.json", function(error, treeData) {
     if (d3.event.defaultPrevented) return; // click suppressed
     update(d);
     centerNode(d);
-    console.log(d)
+    //console.log(d)
   }
 
   function update(source) {
@@ -173,7 +173,7 @@ treeJSON = d3.json("skilltree.json", function(error, treeData) {
     // Update the nodes
     node = svgGroup.selectAll("g.node")
       .data(nodes, function(d) {
-        console.log(d)
+        //console.log(d)
         return d.id || (d.id = ++i);
       });
 
@@ -189,6 +189,22 @@ treeJSON = d3.json("skilltree.json", function(error, treeData) {
         d3.select('div.discription p').text(d.discription);
         d3.select('div.essential p').text(d.essential);
         d3.select('div.optional p').text(d.optional);
+
+        var t = d3.select('div.discription p').text();
+        d.links && (d.links.discription.forEach(function(d,i) {
+          t = t.replace(d.text, '<a ' + ' href="' + d.url + '">' + d.text + '</a>');
+        }));
+        d3.select('div.discription p').html(t);
+        t = d3.select('div.essential p').text();
+        d.links && (d.links.essential.forEach(function(d,i) {
+          t = t.replace(d.text, '<a ' + ' href="' + d.url + '">' + d.text + '</a>');
+        }));
+        d3.select('div.essential p').html(t);
+        t = d3.select('div.optional p').text();
+        d.links && (d.links.optional.forEach(function(d,i) {
+          t = t.replace(d.text, '<a ' + ' href="' + d.url + '">' + d.text + '</a>');
+        }));
+        d3.select('div.optional p').html(t);
       });
 
     nodeEnter.append("circle")
