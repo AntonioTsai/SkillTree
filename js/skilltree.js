@@ -12,7 +12,6 @@ treeJSON = d3.json("skilltree.json", function(error, treeData) {
   // size of the diagram
   var viewerWidth = $(".skill-tree").width();
   var viewerHeight = $(document).height() * 0.7;
-  //console.log(viewerWidth, viewerHeight);
   var tree = d3.layout.tree()
     .size([viewerHeight, viewerWidth]);
 
@@ -140,7 +139,6 @@ treeJSON = d3.json("skilltree.json", function(error, treeData) {
     if (d3.event.defaultPrevented) return; // click suppressed
     update(d);
     centerNode(d);
-    //console.log(d)
   }
 
   function update(source) {
@@ -173,7 +171,6 @@ treeJSON = d3.json("skilltree.json", function(error, treeData) {
     // Update the nodes
     node = svgGroup.selectAll("g.node")
       .data(nodes, function(d) {
-        //console.log(d)
         return d.id || (d.id = ++i);
       });
 
