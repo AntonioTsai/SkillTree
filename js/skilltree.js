@@ -186,6 +186,7 @@ treeJSON = d3.json("skilltree.json", function(error, treeData) {
         d3.select('div.discription p').text(d.discription);
         d3.select('div.essential p').text(d.essential);
         d3.select('div.optional p').text(d.optional);
+        d3.select('div.certification p').text(d.certification);
 
         var t = d3.select('div.discription p').text();
         d.links && (d.links.discription.forEach(function(d,i) {
@@ -202,6 +203,11 @@ treeJSON = d3.json("skilltree.json", function(error, treeData) {
           t = t.replace(d.text, '<a ' + ' href="' + d.url + '">' + d.text + '</a>');
         }));
         d3.select('div.optional p').html(t);
+        t = d3.select('div.certification p').text();
+        d.links && (d.links.certification.forEach(function(d,i) {
+          t = t.replace(d.text, '<a ' + ' href="' + d.url + '">' + d.text + '</a>');
+        }));
+        d3.select('div.certification p').html(t);
       });
 
     nodeEnter.append("circle")
