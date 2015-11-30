@@ -1,3 +1,31 @@
+function masterList(url) {
+	masterListJSON = d3.json(url, function(err, data) {
+		//console.log(data);
+		var tempMaster = '<div class="ui dimmer"><div class="content"><div class="center"><h2 class="ui inverted header"></h2><p></p></div></div></div><img class="ui image" src="">';
+
+		//var master = d3.select("div.ui.inverted.segment").append("div")
+		//		.attr("class", "ui medium image")
+		//		.html(tempMaster);
+		//console.log(master);
+
+		var master = d3.select("div.ui.inverted.segment").selectAll("div")
+				.data(data)
+			.enter().append("div")
+				.attr("class", "ui medium image")
+				.html(tempMaster);
+
+		master.select("img.image")
+			.attr("src", function(d) {return d.photo;} )
+		master.select("div.center h2").text(function(d) {return d.name;} )
+		master.select("div.center p").text(function(d) {return d.info;} );
+
+
+		$('.inverted.segment .image').dimmer({
+		    on: 'hover'
+		  });
+	});
+}
+
 // Get JSON data
 masterJSON = d3.json("master.json", function(error, data) {
 	//console.log(data);
@@ -23,7 +51,6 @@ masterJSON = d3.json("master.json", function(error, data) {
 					s.children && lightup(s.children);
 				};
 			})
-			//var n = node.select("text")
 		})
 	}
 });

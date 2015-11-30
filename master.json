@@ -1,31 +1,34 @@
-{
-  "masters":  [
-    {
-     "name": "Name",
-     "skill": [
-      {
-       "name": "攻擊",
-       "children": [
-        {"name": "網頁"},
-        {"name": "網路程式"},
-        {"name": "OS"}
-      ]
-      },
-      {
-       "name": "防禦",
-       "children": [
-        {"name": "防禦性程式開發"},
-        {"name": "企業資安"}
-      ]
-      },
-      {
-       "name": "逆向",
-       "children": [
-        {"name": "平台"},
-        {"name": "Fuzzy"}
-       ]
-      }
-     ]
-    }
-  ]
-}
+[
+  {
+    "name": "Name",
+    "info": "some discription",
+    "photo": "http://fakeimg.pl/300x200",
+    "sklist": [
+      "攻擊",
+      "網頁",
+      "網路程式",
+      "OS",
+      "防禦",
+      "防禦性程式開發",
+      "企業資安",
+      "逆向",
+      "平台",
+      "Fuzzy"
+    ]
+  },
+  {
+    "name": "Onion",
+    "info": "Black black Onion",
+    "photo": "http://fakeimg.pl/300x180",
+    "sklist": [
+      "攻擊",
+      "Log分析",
+      "網路程式",
+      "OS",
+      "防禦",
+      "防禦性程式開發",
+      "企業資安",
+      "逆向"
+    ]
+  }
+]
