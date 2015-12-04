@@ -1,4 +1,4 @@
-function masterList(url) {
+function master(url) {
 	masterListJSON = d3.json(url, function(err, data) {
 		// template of master avator
 		var tempMaster = '<div class="ui dimmer"><div class="content"><div class="center"><h2 class="ui inverted header"></h2><p></p></div></div></div><img class="ui image" src="">';
@@ -19,10 +19,8 @@ function masterList(url) {
 		    on: 'hover'
 		  });
 	});
-};
-function masterSkill() {
-	// Get JSON data
-	masterJSON = d3.json("master.json", function(error, data) {
+
+	masterJSON = d3.json(url, function(error, data) {
 		var master = d3.selectAll("div.ui.medium.image.dimmable")
 			.on("click", function(d) {
 				if (d.name == d3.select(this).select("h2").text()) {
