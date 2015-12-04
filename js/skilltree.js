@@ -179,7 +179,7 @@ treeJSON = d3.json("skilltree.json", function(error, treeData) {
       //.call(dragListener)
       .attr("class", "node")
       .attr("id", function(d) {
-        return "S" + d.id;
+        return "S" + d.uid;
       })
       .attr("transform", function(d) {
         return "translate(" + source.y0 + "," + source.x0 + ")";

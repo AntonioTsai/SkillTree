@@ -24,19 +24,18 @@ function masterSkill() {
 	// Get JSON data
 	masterJSON = d3.json("master.json", function(error, data) {
 		var master = d3.selectAll("div.ui.medium.image.dimmable")
-			.on("click", function() {
-				data.forEach(function(d) {
-					if (d.name == master.select("h2").text()) {
-						lightup(d.sklist);
-					};
+			.on("click", function(d) {
+				if (d.name == d3.select(this).select("h2").text()) {
+					// Clean up
+					d3.selectAll("g.node circle").style("fill", "#EEE", "important");
+					lightup(d.sklist);
+				};
 				})
 			});
 
-		function lightup(skill) {
-			var node = d3.selectAll("g.node")[0];
-			skill.forEach(function(s) {
-				d3.select("g#S" + s + " circle").style("fill", "steelblue", "important");
-				})
-			};
-	})
+	function lightup(skill) {
+		skill.forEach(function(s) {
+			d3.select("g#S" + s + " circle").style("fill", "steelblue", "important");
+		})
+	};
 };
