@@ -11,7 +11,7 @@ treeJSON = d3.json("skilltree.json", function(error, treeData) {
   var root;
   // size of the diagram
   var viewerWidth = $(".skill-tree").width();
-  var viewerHeight = $(document).height() * 0.7;
+  var viewerHeight = screen.height * 0.6;
   var tree = d3.layout.tree()
     .size([viewerHeight, viewerWidth]);
 
