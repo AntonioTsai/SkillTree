@@ -45,3 +45,8 @@
 .foot {
   height: 25%;
 }
+
+.masterList {
+  overflow-y:auto;
+  white-space:nowrap;
+}

@@ -3,7 +3,7 @@ function master(url) {
 		// template of master avator
 		var tempMaster = '<div class="ui dimmer"><div class="content"><div class="center"><h2 class="ui inverted header"></h2><p></p></div></div></div><img class="ui image" src="">';
 
-		var master = d3.select("div.ui.inverted.segment").selectAll("div")
+		var master = d3.select("div.ui.inverted.segment .masterList").selectAll("div")
 				.data(data)
 			.enter().append("div")
 				.attr("class", "ui medium image")
