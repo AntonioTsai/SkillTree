@@ -1,3 +1,5 @@
+var clickNode;
+
 function master(url) {
 	masterListJSON = d3.json(url, function(err, data) {
 		// template of master avator
@@ -25,7 +27,11 @@ function master(url) {
 			.on("click", function(d) {
 				if (d.name == d3.select(this).select("h2").text()) {
 					// Clean up
-					d3.selectAll("g.node circle").style("fill", "#EEE", "important");
+					clkNode[0] = null;
+					clkNode[1] = null;
+					d3.selectAll("g.node circle")
+						.style("fill", "#FFFFFF")
+						.style("stroke", "steelblue");
 					lightup(d.sklist);
 				};
 				})
@@ -33,7 +39,7 @@ function master(url) {
 
 	function lightup(skill) {
 		skill.forEach(function(s) {
-			d3.select("g#S" + s + " circle").style("fill", "steelblue", "important");
+			d3.select("g#S" + s + " circle").style("fill", "steelblue");
 		})
 	};
 };

@@ -2,11 +2,6 @@
   cursor: pointer;
 }
 
-.node circle {
-  fill: #EEE !important;
-  stroke: steelblue;
-  stroke-width: 1.5px;
-}
 
 .node text {
   font-size: 10px;

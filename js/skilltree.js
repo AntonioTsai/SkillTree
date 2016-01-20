@@ -1,4 +1,6 @@
 // Get JSON data
+var clkNode = [null, null];
+
 treeJSON = d3.json("skilltree.json", function(error, treeData) {
 
   // Calculate total nodes, max label length
@@ -103,7 +105,7 @@ treeJSON = d3.json("skilltree.json", function(error, treeData) {
         .data(nodes, function(d) {
           return d.id;
         }).filter(function(d, i) {
-          if (d.id == draggingNode.id) {
+          if (d.id == draggingNode.id) {c
             return false;
           }
           return true;
@@ -135,10 +137,24 @@ treeJSON = d3.json("skilltree.json", function(error, treeData) {
   }
 
   // Toggle children on click.
+  // !!!!!
   function click(d) {
-    if (d3.event.defaultPrevented) return; // click suppressed
-    update(d);
+    if(clkNode[0] != null) {
+      d3.select("g#S" + clkNode[0] + " circle")
+        .style("stroke", "steelblue")
+        .style("fill", function() {return clkNode[1] == "NM" ? "#FFFFFF" : "steelblue"});
+    }
+    clkNode[0] = d.uid;
+    clkNode[1] = d3.select(this).select(".nodeCircle").style("fill") == "rgb(255, 255, 255)" ? "NM" : "MT";
     centerNode(d);
+    d3.select(this).select(".nodeCircle")
+      .style("stroke", "#FFA726")
+      .style("fill", "#FFA726");
+
+    d3.select('div.discription p').text(d.discription);
+    d3.select('div.essential p').text(d.essential);
+    d3.select('div.optional p').text(d.optional);
+    d3.select('div.certification p').text(d.certification);
   }
 
   function update(source) {
@@ -185,40 +201,12 @@ treeJSON = d3.json("skilltree.json", function(error, treeData) {
         return "translate(" + source.y0 + "," + source.x0 + ")";
       })
       .on('click', click)
-      .on('mouseover', function(d) {
-        d3.select('div.discription p').text(d.discription);
-        d3.select('div.essential p').text(d.essential);
-        d3.select('div.optional p').text(d.optional);
-        d3.select('div.certification p').text(d.certification);
-
-        var t = d3.select('div.discription p').text();
-        d.links && (d.links.discription.forEach(function(d,i) {
-          t = t.replace(d.text, '<a ' + ' href="' + d.url + '">' + d.text + '</a>');
-        }));
-        d3.select('div.discription p').html(t);
-        t = d3.select('div.essential p').text();
-        d.links && (d.links.essential.forEach(function(d,i) {
-          t = t.replace(d.text, '<a ' + ' href="' + d.url + '">' + d.text + '</a>');
-        }));
-        d3.select('div.essential p').html(t);
-        t = d3.select('div.optional p').text();
-        d.links && (d.links.optional.forEach(function(d,i) {
-          t = t.replace(d.text, '<a ' + ' href="' + d.url + '">' + d.text + '</a>');
-        }));
-        d3.select('div.optional p').html(t);
-        t = d3.select('div.certification p').text();
-        d.links && (d.links.certification.forEach(function(d,i) {
-          t = t.replace(d.text, '<a ' + ' href="' + d.url + '">' + d.text + '</a>');
-        }));
-        d3.select('div.certification p').html(t);
-      });
 
     nodeEnter.append("circle")
       .attr('class', 'nodeCircle')
-      .attr("r", 0)
-      .style("fill", function(d) {
-        return d._children ? "lightsteelblue" : "#fff";
-      });
+      .attr("r", 4.5)
+      .style("fill", "#FFFFFF")
+      .style("stroke", "steelblue");
 
     nodeEnter.append("text")
       .attr("x", function(d) {
@@ -232,14 +220,7 @@ treeJSON = d3.json("skilltree.json", function(error, treeData) {
       .text(function(d) {
         return d.name;
       })
-      .style("fill-opacity", 0);
-
-    //!!! Change the circle fill depending on whether it has children and is collapsed
-    node.select("circle.nodeCircle")
-      .attr("r", 4.5)
-      .style("fill", function(d) {
-        return d._children ? "lightsteelblue" : "#fff";
-      });
+      .style("fill-opacity", 1);
 
     // Transition nodes to their new position.
     var nodeUpdate = node.transition()
