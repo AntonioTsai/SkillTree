@@ -2,6 +2,10 @@
   cursor: pointer;
 }
 
+.node circle {
+  fill: #123ABC;
+  stroke: #CBA543;
+}
 
 .node text {
   font-size: 10px;
@@ -44,4 +48,8 @@
 .masterList {
   overflow-y:auto;
   white-space:nowrap;
+}
+
+iframe {
+  height: 100%;
 }
