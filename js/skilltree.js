@@ -151,7 +151,16 @@ treeJSON = d3.json("skilltree.json", function(error, treeData) {
       .style("stroke", "#FFA726")
       .style("fill", "#FFA726");
 
-    d3.select("iframe").attr("src","/wiki/" + d.name + ".html");
+    // Update wiki src
+    var path = "基礎技能";
+    if(d.depth == 2) {
+      path = d.parent.name + "-" + d.name;
+    } else if(d.depth == 1) {
+      path = d.name;
+    }
+    // d3.select("iframe").attr("src","/wiki/" + d.name + ".html");
+    d3.select("iframe").attr("src",`http://wiki.tdohacker.org/wiki/${path}?useformat=mobile`);
+    console.log(d);
   }
 
   function update(source) {
