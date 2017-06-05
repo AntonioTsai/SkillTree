@@ -1,7 +1,9 @@
 // Get JSON data
 var clkNode = [null, null];
 
-treeJSON = d3.json("skilltree.json", function(error, treeData) {
+console.log("Load GetSkillTree");
+// treeJSON = d3.json("skilltree.json", function(error, treeData) {
+treeJSON = d3.json("GetSkillTree.json", function(error, treeData) {
 
   // Calculate total nodes, max label length
   var totalNodes = 0;
@@ -152,15 +154,8 @@ treeJSON = d3.json("skilltree.json", function(error, treeData) {
       .style("fill", "#FFA726");
 
     // Update wiki src
-    var path = "基礎技能";
-    if(d.depth == 2) {
-      path = d.parent.name + "-" + d.name;
-    } else if(d.depth == 1) {
-      path = d.name;
-    }
     // d3.select("iframe").attr("src","/wiki/" + d.name + ".html");
-    d3.select("iframe").attr("src",`http://wiki.tdohacker.org/wiki/${path}?useformat=mobile`);
-    console.log(d);
+    d3.select("iframe").attr("src",d.intro);
   }
 
   function update(source) {
